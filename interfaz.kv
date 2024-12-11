@@ -1,0 +1,879 @@
+<LoginScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: [20, 30, 20, 20]
+        spacing: 10
+
+        BoxLayout:
+            size_hint_y: 0.7  
+            size_hint_x: 0.5
+            orientation: "vertical"
+            
+
+            Label:
+                text: "BIENVENIDO A\nBLOCKBUSTERS"
+                font_size: 110
+                bold: True
+                color: 0.25, 0.32, 0.52, 1
+                halign: "left"
+                valign: "middle"
+                font_name: "Agrandir-Regular.ttf"
+                text_size: self.width, None  
+                size_hint_y: None
+                height: self.texture_size[1]
+
+        BoxLayout:
+            orientation: "horizontal"
+            spacing: 20
+
+            BoxLayout:
+                orientation: "vertical"
+                spacing: 20
+                size_hint_x: 0.6
+                size_hint_y: 0.7
+
+                Label:
+                    text: "Iniciá sesión"
+                    font_size: 24
+                    color: 0.25, 0.32, 0.52, 1
+                    halign: "left"
+                    size_hint_y: None
+                    height: 50
+
+                BoxLayout:
+                    size_hint_y: None
+                    height: 50
+                    spacing: 10
+
+                    Image:
+                        source: "user_icon.png"
+                        size_hint_x: None
+                        width: 30
+
+                    TextInput:
+                        id: username_input
+                        hint_text: "Username"
+                        font_size: 18
+                        multiline: False
+                        size_hint_x: 0.9
+
+                BoxLayout:
+                    size_hint_y: None
+                    height: 50
+                    spacing: 10
+
+                    Image:
+                        source: "password_icon.png"
+                        size_hint_x: None
+                        width: 30
+
+                    TextInput:
+                        id: password_input
+                        hint_text: "Password"
+                        font_size: 18
+                        password: True
+                        multiline: False
+                        size_hint_x: 0.9
+
+                Button:
+                    text: "Iniciar Sesión"
+                    background_color: 0.8, 0.45, 0.51, 1
+                    font_size: 20
+                    size_hint_y: None
+                    width: 30
+                    height: 50
+                    on_release: app.mensaje(username_input.text, password_input.text)
+
+                Label:
+                    id: message_label
+                    text: ""
+                    font_size: 16
+                    color: 1, 0, 0, 1  # Color rojo para errores
+                    halign: "left"
+                    size_hint_y: None
+                    height: 40
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    spacing: 10
+                    size_hint_y: None
+                    height: 40
+
+                    Label:
+                        text: "¿No tenés una cuenta?"
+                        font_size: 16
+                        color: 0.25, 0.32, 0.52, 1
+                        halign: "right"
+                        valign: "middle"
+                        size_hint_x: 0.7  # Ajusta el ancho según el espacio necesario
+
+                    Button:
+                        text: "[b][color=#4a60ff]Registrate[/color][/b]"
+                        markup: True  # Habilita el uso de color y formato en el texto
+                        font_size: 16
+                        background_color: 0, 0, 0, 0  # Hace que el fondo sea transparente
+                        color: 0.29, 0.38, 0.75, 1  # Color del texto
+                        size_hint_x: 0.3
+                        on_release: app.root.current = 'register'  # Cambia a la pantalla de registro
+
+            # Sección derecha (Imagen)
+            BoxLayout:
+                size_hint_x: 0.6
+                padding: [0, 0, 50, 0]
+                Image:
+                    source: "books_image.png"
+                    allow_stretch: True
+                    keep_ratio: True
+                    size_hint: 1, 1.5
+<RegisterScreen>:
+    BoxLayout:
+        orientation: "horizontal"
+        padding: [50, 50, 50, 50]
+        spacing: 50
+
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 20
+            padding: 20  
+
+            # Título centrado
+            Label:
+                text: "REGISTRATE Y\nCONOCENOS"
+                font_size: 100
+                font_name: "Agrandir-Regular.ttf"
+                bold: True
+                color: 0.15, 0.15, 0.35, 1
+                halign: "left"
+                valign: "middle"
+                text_size: self.width, None
+
+            # Campos de entrada
+            BoxLayout:
+                orientation: "vertical"
+                spacing: 15
+
+                # Nombre input
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: None
+                    height: 50
+                    spacing: 10
+
+                    Image:
+                        source: "user_icon.png"
+                        size_hint: None, None
+                        size: 30, 30
+
+                    TextInput:
+                        id: nombre_input
+                        hint_text: "Nombre"
+                        font_size: 16
+                        multiline: False
+                        size_hint_x: 0.8
+                        hint_text_color: (0.25, 0.32, 0.52, 1)
+                        foreground_color: (0.15, 0.15, 0.35, 1)
+                        background_color: (0.88, 0.96, 1, 1)
+                        padding: [10, 10, 10, 10]
+                        background_normal: ""
+                        background_active: ""
+                        
+                # Apellido input
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: None
+                    height: 50
+                    spacing: 10
+
+                    Image:
+                        source: "user_icon.png"
+                        size_hint: None, None
+                        size: 30, 30
+
+                    TextInput:
+                        id: apellido_input
+                        hint_text: "Apellido"
+                        font_size: 16
+                        multiline: False
+                        size_hint_x: 0.8
+                        hint_text_color: (0.25, 0.32, 0.52, 1)
+                        foreground_color: (0.15, 0.15, 0.35, 1)
+                        background_color: (0.88, 0.96, 1, 1)
+                        padding: [10, 10, 10, 10]
+                        background_normal: ""
+                        background_active: ""
+                        
+                # Username input
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: None
+                    height: 50
+                    spacing: 10
+
+                    Image:
+                        source: "id_icon.png"
+                        size_hint: None, None
+                        size: 30, 30
+
+                    TextInput:
+                        id: username_register_input
+                        hint_text: "Username"
+                        font_size: 16
+                        multiline: False
+                        size_hint_x: 0.8
+                        hint_text_color: (0.25, 0.32, 0.52, 1)
+                        foreground_color: (0.15, 0.15, 0.35, 1)
+                        background_color: (0.88, 0.96, 1, 1)
+                        padding: [10, 10, 10, 10]
+                        background_normal: ""
+                        background_active: ""
+                
+                # Email input
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: None
+                    height: 50
+                    spacing: 10
+
+                    Image:
+                        source: "mail_icon.png"
+                        size_hint: None, None
+                        size: 30, 30
+
+                    TextInput:
+                        id: mail_input
+                        hint_text: "Mail"
+                        font_size: 16
+                        multiline: False
+                        size_hint_x: 0.8
+                        hint_text_color: (0.25, 0.32, 0.52, 1)
+                        foreground_color: (0.15, 0.15, 0.35, 1)
+                        background_color: (0.88, 0.96, 1, 1)
+                        padding: [10, 10, 10, 10]
+                        background_normal: ""
+                        background_active: ""
+
+                # Password input
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: None
+                    height: 50
+                    spacing: 10
+
+                    Image:
+                        source: "password_icon.png"
+                        size_hint: None, None
+                        size: 30, 30
+
+                    TextInput:
+                        id: pwd1_input
+                        hint_text: "Password"
+                        font_size: 16
+                        password: True
+                        multiline: False
+                        size_hint_x: 0.8
+                        hint_text_color: (0.25, 0.32, 0.52, 1)
+                        foreground_color: (0.15, 0.15, 0.35, 1)
+                        background_color: (0.88, 0.96, 1, 1)
+                        padding: [10, 10, 10, 10]
+                        background_normal: ""
+                        background_active: ""
+
+                # Confirmar password input
+                # Password input
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: None
+                    height: 50
+                    spacing: 10
+
+                    Image:
+                        source: "password_icon.png"
+                        size_hint: None, None
+                        size: 30, 30
+
+                    TextInput:
+                        id: pwd2_input
+                        hint_text: "Confirm Password"
+                        font_size: 16
+                        password: True
+                        multiline: False
+                        size_hint_x: 0.8
+                        hint_text_color: (0.25, 0.32, 0.52, 1)
+                        foreground_color: (0.15, 0.15, 0.35, 1)
+                        background_color: (0.88, 0.96, 1, 1)
+                        padding: [10, 10, 10, 10]
+                        background_normal: ""
+                        background_active: ""
+
+                # Botón de registro
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 70  
+
+                    Widget:
+                        size_hint_x: None
+                        width: 0  
+
+                    Button:
+                        text: 'Registrate'
+                        size_hint: None, None
+                        size: 200, 50
+                        background_color: (0.88, 0.96, 1, 1)
+                        color: (0.15, 0.15, 0.35, 1)
+                        border: [12, 12, 12, 12]
+                        pos_hint: {'right': 1} 
+                        on_release: app.registrar_usuario(nombre_input.text, apellido_input.text, username_register_input.text, mail_input.text, pwd1_input.text, pwd2_input.text)
+
+                    Label:
+                        id: register_message
+                        text: ""
+                        font_size: 16
+                        color: 1, 0, 0, 1  # Rojo para errores
+                        size_hint_y: None
+                        height: 30
+
+        # Sección derecha (Imagen)
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_x: 0.5  
+
+            FloatLayout:
+                Image:
+                    source: "books_image.png"
+                    allow_stretch: True
+                    keep_ratio: True
+                    size_hint: None, None
+                    size: 600, 600
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+<HomeScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 20
+
+        Label:
+            text: "DESAFIÁ\nTU FORMA DE LEER"
+            font_size: 110
+            font_name: "Agrandir-Regular.ttf"
+            bold: True
+            color: 0.25, 0.32, 0.52, 1
+            halign: 'center'
+            text_size: self.width, None
+            size_hint_y: None
+            height: self.texture_size[1]
+        
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            size_hint_x: 0.6
+            height: 200
+            spacing: 20
+            pos_hint: {"center_x": 0.5}  # Centrado horizontal
+
+            Button:
+                text: "CHEQUEA NUESTRAS RECOMENDACIONES"
+                background_color: 0.8, 0.45, 0.51, 1
+                size_hint: 1, None
+                height: 60
+                font_size: 20
+                color: 1, 1, 1, 1  # Texto en blanco
+                bold: True
+                on_release: app.root.current = 'recommendations'
+
+            Button:
+                text: "ALQUILA UN LIBRO"
+                background_color: 0.8, 0.45, 0.51, 1
+                size_hint: 1, None
+                height: 60
+                font_size: 20
+                color: 1, 1, 1, 1
+                bold: True
+                on_release: app.root.current = 'mainwidget'
+
+        BoxLayout:
+            orientation: "horizontal"
+            spacing: 20
+
+            Image:
+                source: "left_image.png"
+                allow_stretch: True
+                keep_ratio: True
+                size_hint: 0.5, 1
+
+            Image:
+                source: "right_image.png"
+                allow_stretch: True
+                keep_ratio: True
+                size_hint: 0.5, 1
+
+<MainWidget>:
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 20
+        spacing: 20
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.6
+            spacing: 200
+
+            Label:
+                text: "ALQUILA \nUN LIBRO"
+                font_size: 100
+                bold: True
+                color: 0.25, 0.32, 0.52, 1
+                halign: 'left'
+                valign: 'middle'
+                font_name: "Agrandir-Regular.ttf"
+                size_hint_y: None
+                height: 70
+
+            GridLayout:
+                cols: 1
+                spacing: 10
+                size_hint_y: None
+                height: self.minimum_height
+                
+                Label:
+                    text: "¿Qué libro querés alquilar?"
+                    font_size: 18
+                    color: 0.25, 0.32, 0.52, 1
+                    font_name: "Agrandir-Regular.ttf"
+                    size_hint_y: None
+                    height: 30
+                TextInput:
+                    id: titulo_input
+                    hint_text: "Escribe el nombre del libro"
+                    multiline: False
+                    background_color: 0.95, 0.95, 0.95, 1
+                    foreground_color: 0, 0, 0, 1
+                    size_hint_y: None
+                    height: 40
+
+                Label:
+                    text: "¿De qué autor?"
+                    font_size: 18
+                    color: 0.25, 0.32, 0.52, 1
+                    halign: 'left'
+                    valign: 'middle'
+                    font_name: "Agrandir-Regular.ttf"
+                    size_hint_y: None
+                    height: 30
+                TextInput:
+                    id: autor_input
+                    hint_text: "Escribe el nombre del autor"
+                    multiline: False
+                    background_color: 0.95, 0.95, 0.95, 1
+                    foreground_color: 0, 0, 0, 1
+                    size_hint_y: None
+                    height: 40
+
+                Label:
+                    text: "¿Por cuánto tiempo?"
+                    font_size: 18
+                    color: 0.25, 0.32, 0.52, 1
+                    halign: 'left'
+                    valign: 'middle'
+                    font_name: "Agrandir-Regular.ttf"
+                    size_hint_y: None
+                    height: 30
+                Spinner:
+                    id: tiempo_input
+                    text: "Elegí una opción"
+                    values: ["1 semana", "2 semanas", "1 mes", "3 meses"]
+                    size_hint_y: None
+                    height: 40
+                    background_color: 0.8, 0.8, 0.8, 1
+
+            Button:
+                text: "Chequea disponibilidad y precio"
+                font_size: 18
+                font_name: "Agrandir-Regular.ttf"
+                background_color: 0.25, 0.32, 0.52, 1
+                color: 1, 1, 1, 1
+                size_hint_y: None
+                height: 50
+                on_press: app.book()
+
+            Label:
+                id: error_label
+                text: ""
+                font_size: 18
+                color: 1, 0, 0, 1  # Color rojo para errores
+                size_hint_y: None
+                height: 50
+                halign: 'center'
+                valign: 'middle'
+                
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.4
+            padding: 150
+            Image:
+                source: 'books5.png'
+                size_hint: None, None
+                size: 800, 800
+                allow_stretch: True
+                keep_ratio: True
+                pos_hint: {'center_y': 0.5}
+
+<RecommendationScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+
+        # Label centrado en la parte superior
+        Label:
+            text: 'NUESTRA ESTANTERIA'
+            font_size: 60
+            color: 0.15, 0.15, 0.35, 1
+            font_name: "Agrandir-Regular.ttf"
+            size_hint_y: None
+            height: 80
+            halign: 'center'
+
+        # ScrollView para las imágenes y texto
+        ScrollView:
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: 1100
+
+                GridLayout:
+                    cols: 4  # Cuatro columnas
+                    padding: [10, 10]
+                    spacing: 20
+                    size_hint_y: None
+                    height: self.minimum_height
+
+                    # Fila 1
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: 250
+                        Image:
+                            source: 'tsh_png.webp'
+                            size_hint: None, None
+                            size: 200, 200
+                            pos_hint: {'center_x': 0.5}
+                        Button:
+                            text: 'The Secret History\nDonna Tartt'
+                            color: 0.15, 0.15, 0.35, 1
+                            size_hint_y: None
+                            height: 40
+                            halign: 'center'
+                            background_normal: ''
+                            background_color: 0.8, 0.8, 0.8, 0
+                            on_release: app.root.current = 'The Secret History'
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: 250
+                        Image:
+                            source: 'np.webp'
+                            size_hint: None, None
+                            size: 200, 200
+                            pos_hint: {'center_x': 0.5}
+                        Button:
+                            text: 'Normal People\nSally Rooney'
+                            color: 0.15, 0.15, 0.35, 1
+                            size_hint_y: None
+                            height: 40
+                            halign: 'center'
+                            background_normal: ''
+                            background_color: 0.8, 0.8, 0.8, 0
+                            on_release: app.root.current = 'login'
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: 250
+                        Image:
+                            source: 'rayuela.png'
+                            size_hint: None, None
+                            size: 200, 200
+                            pos_hint: {'center_x': 0.5}
+                        Button:
+                            text: 'Rayuela\nJulio Cortazar'
+                            color: 0.15, 0.15, 0.35, 1
+                            size_hint_y: None
+                            height: 40
+                            halign: 'center'
+                            background_normal: ''
+                            background_color: 0.8, 0.8, 0.8, 0
+                            on_release: app.root.current = 'login'
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: 250
+                        Image:
+                            source: 'lcdle.webp'
+                            size_hint: None, None
+                            size: 200, 200
+                            pos_hint: {'center_x': 0.5}
+                        Button:
+                            text: 'La casa de los espiritus\nIsabel Allende'
+                            color: 0.15, 0.15, 0.35, 1
+                            size_hint_y: None
+                            height: 40
+                            halign: 'center'
+                            background_normal: ''
+                            background_color: 0.8, 0.8, 0.8, 0
+                            on_release: app.root.current = 'login'
+
+                    # Fila 2
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: 250
+                        Image:
+                            source: 'orgullo.webp'
+                            size_hint: None, None
+                            size: 200, 200
+                            pos_hint: {'center_x': 0.5}
+                        Button:
+                            text: 'Orgullo y Prejuicio\nJane Austen'
+                            color: 0.15, 0.15, 0.35, 1
+                            size_hint_y: None
+                            height: 40
+                            halign: 'center'
+                            background_normal: ''
+                            background_color: 0.8, 0.8, 0.8, 0
+                            on_release:app.root.current = 'login'
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: 250
+                        Image:
+                            source: 'retrato.jpeg'
+                            size_hint: None, None
+                            size: 200, 200
+                            pos_hint: {'center_x': 0.5}
+                        Button:
+                            text: 'El Retrato de Dorian Gray\nOscar Wilde'
+                            color: 0.15, 0.15, 0.35, 1
+                            size_hint_y: None
+                            height: 40
+                            halign: 'center'
+                            background_normal: ''
+                            background_color: 0.8, 0.8, 0.8, 0
+                            on_release: app.root.current = 'login'
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: 250
+                        Image:
+                            source: 'peligros.jpeg'
+                            size_hint: None, None
+                            size: 200, 200
+                            pos_hint: {'center_x': 0.5}
+                        Button:
+                            text: 'Los Peligros de Fumar en la cama\nMariana Enriquez'
+                            color: 0.15, 0.15, 0.35, 1
+                            size_hint_y: None
+                            height: 40
+                            halign: 'center'
+                            background_normal: ''
+                            background_color: 0.8, 0.8, 0.8, 0
+                            on_release: app.root.current = 'login'
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: 250
+                        Image:
+                            source: 'cumbres.jpeg'
+                            size_hint: None, None
+                            size: 200, 200
+                            pos_hint: {'center_x': 0.5}
+                        Button:
+                            text: 'Cumbres Borrascosas\nEmily Bronte'
+                            color: 0.15, 0.15, 0.35, 1
+                            size_hint_y: None
+                            height: 40
+                            halign: 'center'
+                            background_normal: ''
+                            background_color: 0.8, 0.8, 0.8, 0
+                            on_release: app.root.current = 'login'
+
+                    # Fila 3 
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: 250
+                        Image:
+                            source: 'aleph.jpeg'
+                            size_hint: None, None
+                            size: 200, 200
+                            pos_hint: {'center_x': 0.5}
+                        Button:
+                            text: 'El Aleph\nJorge Luis Borges'
+                            color: 0.15, 0.15, 0.35, 1
+                            size_hint_y: None
+                            height: 40
+                            halign: 'center'
+                            background_normal: ''
+                            background_color: 0.8, 0.8, 0.8, 0
+                            on_release: app.root.current = 'login'
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: 250
+                        Image:
+                            source: 'cien_años.webp'
+                            size_hint: None, None
+                            size: 200, 200
+                            pos_hint: {'center_x': 0.5}
+                        Button:
+                            text: 'Cien años de soledad\nGabriel Garcia Marquez'
+                            color: 0.15, 0.15, 0.35, 1
+                            size_hint_y: None
+                            height: 40
+                            halign: 'center'
+                            background_normal: ''
+                            background_color: 0.8, 0.8, 0.8, 0
+                            on_release: app.root.current = 'login'
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: 250
+                        Image:
+                            source: 'odisea.jpeg'
+                            size_hint: None, None
+                            size: 200, 200
+                            pos_hint: {'center_x': 0.5}
+                        Button:
+                            text: 'La Odisea\nHomero'
+                            color: 0.15, 0.15, 0.35, 1
+                            size_hint_y: None
+                            height: 40
+                            halign: 'center'
+                            background_normal: ''
+                            background_color: 0.8, 0.8, 0.8, 0
+                            on_release: app.root.current = 'login'
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: 250
+                        Image:
+                            source: 'corte.jpeg'
+                            size_hint: None, None
+                            size: 200, 200
+                            pos_hint: {'center_x': 0.5}
+                        Button:
+                            text: 'Una corte de rosas y espinas\nSarah J. Maas'
+                            color: 0.15, 0.15, 0.35, 1
+                            size_hint_y: None
+                            height: 40
+                            halign: 'center'
+                            background_normal: ''
+                            background_color: 0.8, 0.8, 0.8, 0
+                            on_release: app.root.current = 'login'
+
+                    # Fila 4 
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: 250
+                        Image:
+                            source: 'ojos.jpeg'
+                            size_hint: None, None
+                            size: 200, 200
+                            pos_hint: {'center_x': 0.5}
+                        Button:
+                            text: 'La pregunta de sus ojos\nEduardo Sacheri'
+                            color: 0.15, 0.15, 0.35, 1
+                            size_hint_y: None
+                            height: 40
+                            halign: 'center'
+                            background_normal: ''
+                            background_color: 0.8, 0.8, 0.8, 0
+                            on_release: app.root.current = 'login'
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: 250
+                        Image:
+                            source: 'alquimista.webp'
+                            size_hint: None, None
+                            size: 200, 200
+                            pos_hint: {'center_x': 0.5}
+                        Button:
+                            text: 'El Alquimista\nPaulo Coelho'
+                            color: 0.15, 0.15, 0.35, 1
+                            size_hint_y: None
+                            height: 40
+                            halign: 'center'
+                            background_normal: ''
+                            background_color: 0.8, 0.8, 0.8, 0
+                            on_release:app.root.current = 'login'
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: 250
+                        Image:
+                            source: 'noches_blancas.webp'
+                            size_hint: None, None
+                            size: 200, 200
+                            pos_hint: {'center_x': 0.5}
+                        Button:
+                            text: 'Noches Blancas\nFiodor Dostoyevski'
+                            color: 0.15, 0.15, 0.35, 1
+                            size_hint_y: None
+                            height: 40
+                            halign: 'center'
+                            background_normal: ''
+                            background_color: 0.8, 0.8, 0.8, 0
+                            on_release: app.root.current = 'login'
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: 250
+                        Image:
+                            source: '1984.webp'
+                            size_hint: None, None
+                            size: 200, 200
+                            pos_hint: {'center_x': 0.5}
+                        Button:
+                            text: '1984\nGeorge Orwell'
+                            color: 0.15, 0.15, 0.35, 1
+                            size_hint_y: None
+                            height: 40
+                            halign: 'center'
+                            background_normal: ''
+                            background_color: 0.8, 0.8, 0.8, 0
+                            on_release: app.root.current = 'login'
+<TSHScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:
+            text: '¡Encontraste tu libro!'
+            font_size: 60
+            color: 0.15, 0.15, 0.35, 1
+            font_name: "Agrandir-Regular.ttf"
+            size_hint_y: None
+            height: 80
+            halign: 'center'
+          
+            
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_x: 0.3
+
+            FloatLayout:
+                Image:
+                    source: "TSH_png.webp"
+                    allow_stretch: True
+                    keep_ratio: True
+                    size_hint: None, None
+                    size: 600, 600
+                    pos_hint: {"center_x": 0.8 , "center_y": 0.5}
