@@ -212,7 +212,7 @@ def alquiler(titulo, autor, tiempo, main_widget):
             AND stock > 0;  -- Verifica que haya stock disponible
         """
     
-        cursor.execute(query, (titulo, titulo, autor, autor))
+        cursor.execute(query, (titulo, titulo, autor, autor),multi=True)
         resultados = cursor.fetchall()
 
         # Si hay resultados, validar si hay uno o más libros
